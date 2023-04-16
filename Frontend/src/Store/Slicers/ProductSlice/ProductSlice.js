@@ -1,11 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getProduct,getProducts,addProducts,deleteProducts,updateProducts } from "../../product.apis";
+import {
+  getProduct,
+  getProducts,
+  addProducts,
+  deleteProducts,
+  updateProducts,
+} from "../../product.apis";
 
 const initialState = {
-  message:null,
+  message: null,
   loading: false,
   List: [],
-  Product:{},
+  Product: {},
   error: null,
   isSuccess: false,
 };
@@ -33,7 +39,7 @@ const userSlice = createSlice({
         state.error = action.error.message;
         state.isSuccess = false;
       });
-      builder
+    builder
       .addCase(GetProduct.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -50,7 +56,7 @@ const userSlice = createSlice({
         state.error = action.error.message;
         state.isSuccess = false;
       });
-      builder
+    builder
       .addCase(AddProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -67,7 +73,7 @@ const userSlice = createSlice({
         state.error = action.error.message;
         state.isSuccess = false;
       });
-      builder
+    builder
       .addCase(DeleteProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -84,7 +90,7 @@ const userSlice = createSlice({
         state.error = action.error.message;
         state.isSuccess = false;
       });
-      builder
+    builder
       .addCase(UpdateProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -103,20 +109,14 @@ const userSlice = createSlice({
       });
   },
 });
-export const GetProduct = createAsyncThunk(
-  "items/getProduct",
-  async (id) => {
-    const response = await getProduct(id);
-    return response.data;
-  }
-);
-export const GetProducts = createAsyncThunk(
-  "items/getProducts",
-  async () => {
-    const response = await getProducts();
-    return response.data;
-  }
-);
+export const GetProduct = createAsyncThunk("items/getProduct", async (id) => {
+  const response = await getProduct(id);
+  return response.data;
+});
+export const GetProducts = createAsyncThunk("items/getProducts", async () => {
+  const response = await getProducts();
+  return response.data;
+});
 export const AddProducts = createAsyncThunk(
   "items/AddProducts",
   async (state) => {

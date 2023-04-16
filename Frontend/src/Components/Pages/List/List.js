@@ -8,7 +8,7 @@ import {
 } from "../../../Store/Slicers/ProductSlice/ProductSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { CssBaseline, Box, Grid, Typography } from "@mui/material";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,35 +38,51 @@ const List = () => {
   };
   const Add = () => {
     if (validateForm()) {
-      dispatch(AddProducts(state))
+      dispatch(AddProducts(state));
     }
   };
   const Update = (Item) => {
     const { __v, ...rest } = Item.row;
-    dispatch(UpdateProducts(rest))
+    dispatch(UpdateProducts(rest));
   };
   const Delete = (Item) => {
     const { __v, ...rest } = Item.row;
-    dispatch(DeleteProducts(rest.id))
+    dispatch(DeleteProducts(rest.id));
   };
-  const View = (Item) =>{
-    navigate(`/List/View/${Item.row.id}`)
-  }
+  const View = (Item) => {
+    navigate(`/List/View/${Item.row.id}`);
+  };
   useEffect(() => {
-   dispatch(GetProducts());
+    dispatch(GetProducts());
   }, []);
   return (
     <React.Fragment>
       <CssBaseline />
       <Box sx={{ height: "80vh" }}>
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} columns={{ xs: 6, md: 12 }}>
+        <Grid
+          container
+          rowSpacing={2}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          columns={{ xs: 6, md: 12 }}
+        >
           <Grid item xs={12}>
-            <div style={{ padding: 20,display: "flex",justifyContent: "space-between"}}>
+            <div
+              style={{
+                padding: 20,
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
               <Typography variant="h5">Add New</Typography>
             </div>
           </Grid>
         </Grid>
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} columns={{ xs: 6, md: 12 }} >
+        <Grid
+          container
+          rowSpacing={2}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          columns={{ xs: 6, md: 12 }}
+        >
           <Grid item xs={1}>
             <TextInput
               fullWidth
@@ -136,9 +152,20 @@ const List = () => {
             />
           </Grid>
         </Grid>
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} columns={{ xs: 6, md: 12 }}>
+        <Grid
+          container
+          rowSpacing={2}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          columns={{ xs: 6, md: 12 }}
+        >
           <Grid item xs={12}>
-            <div style={{ padding: 20,display: "flex",justifyContent: "space-between"}}>
+            <div
+              style={{
+                padding: 20,
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
               <Typography variant="h5">Products</Typography>
             </div>
           </Grid>
